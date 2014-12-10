@@ -1,43 +1,25 @@
 \documentclass{beamer}
-\usepackage{polyglossia}
-\usepackage{tikz}
-\usetikzlibrary{arrows,shapes}
-\tikzstyle{every picture}+=[remember picture]
-\setdefaultlanguage{french}
 
-\newcommand{\theauthor}[3][3cm]{%
-  \vbox{\hbox{\includegraphics[width=#1]{#2}}\hbox to #1{\hss#3\hss}}}
+\usepackage[frenchb]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
 
-\author[J.Amiguet, J.Droz]{Johan Droz}
-\title{Sticky Policies}
-\date{26 november 2014}
+\usetheme{Warsaw}
 
-\makeatletter
-    \newenvironment{withoutheadline}{
-        \setbeamertemplate{headline}[default]
-        \setbeamertemplate{footline}[default]
-        \def\beamer@entrycode{\vspace*{-\headheight}}
-    }{}
-\makeatother
-
-%\usepackage[francais]{babel}
-
-\DeclareTextFontCommand{\emph}{\bf\color{navyblue}}
+\author{D. Froelicher, A. Marguet, J.Droz, C. Koerckel}
+\title{Google Glass}
+\date{17 d�cembre 2014}
 
 \begin{document}
-\institute[EPFL]{École Polytechnique Fédérale de Lausanne}
-\titlegraphic{\includegraphics[height=25pt]{EPFL_LOG_QUADRI_Red}}
 
 
-\begin{withoutheadline}
 \begin{frame}
 \titlepage
+\figure{\includegraphics{portrait.jpg}}
 \end{frame}
-\end{withoutheadline}
-\setcounter{framenumber}{0}
+
 \begin{frame}
 \tableofcontents
 \end{frame}
-\section{Purpose}
 
 \end{document}
