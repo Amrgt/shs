@@ -6,6 +6,22 @@
 
 \usetheme{Warsaw}
 
+\setbeamercolor{mycolor}{fg=white,bg=black}
+
+\defbeamertemplate*{footline}{shadow theme}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\hfill\insertshortauthor
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hfill%
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{mycolor}%
+\hfill\insertframenumber\,/\,\inserttotalframenumber
+\end{beamercolorbox}}%
+\vskip0pt%
+}
+
 \author{D. Froelicher, A. Marguet, J.Droz, C. Koerckel}
 \title{Google Glass}
 \date{17 décembre 2014}
@@ -16,18 +32,24 @@
 \begin{frame}
 \titlepage
 \begin{figure}
-\includegraphics[height=4cm,width=6cm]{portrait.jpg}
+\includegraphics[height=4cm]{portrait.jpg}
 \end{figure}
 \end{frame}
 
 \begin{frame}
-\begin{figure}
-\includegraphics[height=4cm,width=5cm]{glass.jpg}
-\end{figure}
-\end{frame}
-
-\begin{frame}
+\frametitle{Sommaire}
 \tableofcontents
+\end{frame}
+
+\begin{frame}
+\frametitle{Problématique}
+\end{frame}
+
+\begin{frame}
+\frametitle{Utilité des Google Glass}
+\begin{figure}
+\includegraphics[height=4cm]{glass.jpg}
+\end{figure}
 \end{frame}
 
 \end{document}
