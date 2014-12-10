@@ -1,0 +1,86 @@
+\documentclass{beamer}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+\tikzstyle{every picture}+=[remember picture]
+\setdefaultlanguage{french}
+
+\newcommand{\theauthor}[3][3cm]{%
+  \vbox{\hbox{\includegraphics[width=#1]{#2}}\hbox to #1{\hss#3\hss}}}
+
+\usetheme{Nolo}
+\author[J.Amiguet, J.Droz]{\theauthor[0.125\textwidth]{portrait.jpg}{Jérôme Amiguet}\hskip 0.2\textwidth \theauthor[0.125\textwidth]{johan.jpg}{Johan Droz}}
+\title{Sticky Policies}
+\date{26 november 2014}
+
+\makeatletter
+    \newenvironment{withoutheadline}{
+        \setbeamertemplate{headline}[default]
+        \setbeamertemplate{footline}[default]
+        \def\beamer@entrycode{\vspace*{-\headheight}}
+    }{}
+\makeatother
+
+%\usepackage[francais]{babel}
+
+\DeclareTextFontCommand{\emph}{\bf\color{navyblue}}
+
+\begin{document}
+\institute[EPFL]{École Polytechnique Fédérale de Lausanne}
+\titlegraphic{\includegraphics[height=25pt]{EPFL_LOG_QUADRI_Red}}
+%\setbeamertemplate{footline}{}
+%\setbeamertemplate{headline}{}
+\begin{withoutheadline}
+\begin{frame}
+\titlepage
+\end{frame}
+\end{withoutheadline}
+\setcounter{framenumber}{0}
+\begin{frame}
+\tableofcontents
+\end{frame}
+\section{Purpose}
+\input{purpose}
+\section{How it works}
+\input{mechanisms}
+\section{Actors}
+\input{actors}
+\section{Illustration}
+\begin{frame}
+\frametitle{Illustration}
+\only<1>{The data is\tikz[baseline]{\node[anchor=base] (enc) {\emph{encrypted}.}}} \only<2>{The policy is added to the data and the key and its hash are\tikz[baseline]{\node[anchor=base] (ch) {\emph{encrypted}}}with the public key of the trusted authority.}\only<3>{The policy is\tikz[baseline]{\node[anchor=base] (sig) {\emph{signed}}}by the user.}
+\only<4>{The service provider is\tikz[baseline]{\node[anchor=base](challenge){\emph{challenged}}}by the trusted authority to access the data.}
+\only<5>{Finally, the service provider\tikz[baseline]{\node[anchor=base] (retr) {\emph{retrieves}}}the symmetric key to access the data.}
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\node[anchor=south west, inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{Mechanisms.png}};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\node (authenticate) at (0.525, 0.575) {};
+\node (check) at (0.35, 0.575) {};
+\node (delivery) at (0.82, 0.475) {};
+\node (symkey) at (0.2, 0.4) {};
+\node (encryption) at (0.26, 0.45) {};
+\node (blargh) at (0.6, 0.425) {};
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\caption{Core mechanisms underpinning the management of sticky policies, from \itshape{Sticky Policies: An Approach for Managing Privacy across Multiple Parties (2011)}}
+\end{figure}
+\begin{tikzpicture}[overlay]
+\path<1>[->, thick, color=navyblue] (enc.south) edge[out=-90, in=90] (encryption);
+\path<2>[->, thick, color=navyblue] (ch.south) edge[out=-90, in=90] (check);
+\path<3>[->, thick, color=navyblue] (sig.south) edge[out=-90, in=90] (authenticate);
+\path<4>[->, thick, color=navyblue] (challenge.south) edge[out=-90, in=90] (blargh);
+\path<5>[->, thick, color=navyblue] (retr.south) edge[out=-90, in=90] (delivery);
+\end{tikzpicture}
+\end{frame}
+\section{Usefulness for the course}
+\input{usefulness}
+\begin{frame}
+\frametitle{End}
+\centering\Huge Questions ?
+\end{frame}
+\end{document}
